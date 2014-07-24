@@ -262,7 +262,7 @@ exports["default"] = Ember.Component.extend({
    * @method handleKeydown
    * @private
    */
- 
+
   handleKeydown: function(event) {
     var map = this.get('keydownMap');
     var method = map[event.keyCode];
@@ -300,6 +300,10 @@ exports["default"] = Ember.Component.extend({
    */
 
   autocompleteText: function() {
+    if(this.get('disableAutocompleteText')) {
+        return;
+    }
+
     this.set('autocompletedOption', null);
     if (!this.get('isOpen') || !this.get('options.length')) {
       return;
